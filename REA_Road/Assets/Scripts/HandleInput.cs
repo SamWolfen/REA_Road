@@ -9,6 +9,9 @@ public class HandleInput : MonoBehaviour
     public float tile;
     Vector3 nextPlayerPos;
     Vector3 lastPlayerPos;
+    public float playerSpeed;
+    float deltaSpeed;
+    
 
     private IEnumerator coroutine;
 
@@ -111,20 +114,23 @@ public class HandleInput : MonoBehaviour
         bool upward = true;
         float i = 0;
         Debug.Log("Hop started");
+        
 
 
         while (!ready)
         {
             Debug.Log("loop hop");
 
+            deltaSpeed = playerSpeed * Time.deltaTime;
+
             //transform.position = new Vector3(transform.position.x, Mathf.Sin(i), transform.position.z);
             
             //i += tile / 10;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(nextPlayerPos.x, transform.position.y, nextPlayerPos.z), tile / 10);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(nextPlayerPos.x, transform.position.y, nextPlayerPos.z), deltaSpeed);
 
             if (upward)
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, nextPlayerPos.y + tile / 2, transform.position.z), tile / 10);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, nextPlayerPos.y + tile / 2, transform.position.z), deltaSpeed);
                 if (transform.position.y  >= nextPlayerPos.y + tile/2)
                 {
                     upward = false;
@@ -132,7 +138,7 @@ public class HandleInput : MonoBehaviour
             }
             else
             {
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, nextPlayerPos.y, transform.position.z), tile / 10);
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(transform.position.x, nextPlayerPos.y, transform.position.z), deltaSpeed);
             }
 
             if ((transform.position.x == nextPlayerPos.x) && (transform.position.z == nextPlayerPos.z) && (transform.position.y == nextPlayerPos.y))

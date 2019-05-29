@@ -20,6 +20,10 @@ public class GarbageCollector : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
+
+
+
+        //collect and disable object
         collision.gameObject.SetActive(false);
     }
 }

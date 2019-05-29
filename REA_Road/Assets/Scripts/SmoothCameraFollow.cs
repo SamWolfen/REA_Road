@@ -5,9 +5,10 @@ using UnityEngine;
 public class SmoothCameraFollow : MonoBehaviour
 {
     public GameObject Target;
+    public GameObject GlobalVariables;
 
     Vector3 initPlayerPos;
-    public float speed;
+    float speed;
     float initSpeed;
     float deltaSpeed;
 
@@ -16,7 +17,7 @@ public class SmoothCameraFollow : MonoBehaviour
     private void Start()
     {
         initPlayerPos = Target.transform.position;
-        initSpeed = speed;
+        initSpeed = speed = GlobalVariables.GetComponent<GlobalVariables>().speed;
     }
 
     private void FixedUpdate()
