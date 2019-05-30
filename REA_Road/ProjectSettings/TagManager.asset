@@ -8,6 +8,7 @@ TagManager:
   - Click
   - Coin
   - Hazard
+  - Question
   layers:
   - Default
   - TransparentFX

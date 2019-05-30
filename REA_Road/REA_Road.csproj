@@ -643,6 +643,7 @@
     <Compile Include="Assets\Scripts\SmoothCameraFollow.cs" />
     <Compile Include="Assets\Scripts\SwipeMovement.cs" />
     <Compile Include="Assets\Scripts\VehicleCode.cs" />
+    <Compile Include="Assets\SlowRotation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\Green.shader" />

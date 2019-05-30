@@ -11,6 +11,8 @@ public class HandleInput : MonoBehaviour
     Vector3 lastPlayerPos;
     public float playerSpeed;
     float deltaSpeed;
+
+    public GameObject Global;
     
 
     private IEnumerator coroutine;
@@ -38,36 +40,39 @@ public class HandleInput : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        //Get the input from SwipeMovement.cs
-        if (GetComponent<SwipeMovement>().swipeU)
+        if (!Global.GetComponent<GlobalVariables>().pause)
         {
-            swipe = Swipe.Up;
-        }
+            //Get the input from SwipeMovement.cs
+            if (GetComponent<SwipeMovement>().swipeU)
+            {
+                swipe = Swipe.Up;
+            }
 
-        if (GetComponent<SwipeMovement>().swipeD)
-        {
-            swipe = Swipe.Down;
-        }
+            if (GetComponent<SwipeMovement>().swipeD)
+            {
+                swipe = Swipe.Down;
+            }
 
-        if (GetComponent<SwipeMovement>().swipeL)
-        {
-            swipe = Swipe.Left;
-        }
+            if (GetComponent<SwipeMovement>().swipeL)
+            {
+                swipe = Swipe.Left;
+            }
 
-        if (GetComponent<SwipeMovement>().swipeR)
-        {
-            swipe = Swipe.Right;
-        }
+            if (GetComponent<SwipeMovement>().swipeR)
+            {
+                swipe = Swipe.Right;
+            }
 
-        if ((!GetComponent<SwipeMovement>().swipeU) && (!GetComponent<SwipeMovement>().swipeD) && (!GetComponent<SwipeMovement>().swipeL) && (!GetComponent<SwipeMovement>().swipeR))
-        {
-            swipe = Swipe.None;
-        }
+            if ((!GetComponent<SwipeMovement>().swipeU) && (!GetComponent<SwipeMovement>().swipeD) && (!GetComponent<SwipeMovement>().swipeL) && (!GetComponent<SwipeMovement>().swipeR))
+            {
+                swipe = Swipe.None;
+            }
 
-        //process input
-        if (ready)
-        {
-            MovePlayer(swipe);
+            //process input
+            if (ready)
+            {
+                MovePlayer(swipe);
+            }
         }
     }
 
@@ -119,7 +124,7 @@ public class HandleInput : MonoBehaviour
     {
         bool upward = true;
         float i = 0;
-        Debug.Log("Hop started");
+        //Debug.Log("Hop started");
         
         if ((nextPlayerPos.x > 5) || (nextPlayerPos.x < -4.5))
         {

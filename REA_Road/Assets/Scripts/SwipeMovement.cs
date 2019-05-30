@@ -59,7 +59,7 @@ public class SwipeMovement : MonoBehaviour {
         //cross deadzone
         if (swipeDelta.magnitude > 5)
         {
-            Debug.Log("dragging happened");
+            //Debug.Log("dragging happened");
             float x = swipeDelta.x;
             float y = swipeDelta.y;
 

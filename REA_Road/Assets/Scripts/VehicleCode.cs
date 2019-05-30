@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class VehicleCode : MonoBehaviour
 {
-    public GameObject Spawner, Deconstructor, Road;
+    public GameObject Spawner, Deconstructor, Road, Global;
 
     public int speed;
 
@@ -17,14 +17,19 @@ public class VehicleCode : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, Deconstructor.transform.position, speed * Time.deltaTime);
-        transform.LookAt(Deconstructor.transform);
-
-        if (transform.position == Deconstructor.transform.position)
+        if (!Global.GetComponent<GlobalVariables>().pause)
         {
-            transform.position = Spawner.transform.position;
-            Road.GetComponent<RoadSetUp>().ReRoll(Deconstructor, gameObject);
-            
+
+            transform.position = Vector3.MoveTowards(transform.position, Deconstructor.transform.position, speed * Time.deltaTime);
+            transform.LookAt(Deconstructor.transform);
+
+            if (transform.position == Deconstructor.transform.position)
+            {
+                transform.position = Spawner.transform.position;
+                //Road.GetComponent<RoadSetUp>().ReRoll(Deconstructor, gameObject);
+
+            }
+
         }
     }
 }

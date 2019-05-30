@@ -22,27 +22,32 @@ public class SmoothCameraFollow : MonoBehaviour
 
     private void FixedUpdate()
     {
-        deltaSpeed = speed * Time.deltaTime;
-
-        initPlayerPos.z += 0.5f * deltaSpeed;
-        transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (0.5f*deltaSpeed));
-
-
-        if (initPlayerPos.z + 0.5f < Target.transform.position.z)
+        if (!GlobalVariables.GetComponent<GlobalVariables>().pause)
         {
-            initPlayerPos.z += deltaSpeed;
-            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2*(deltaSpeed));
-        }
 
-        if (initPlayerPos.z > Target.transform.position.z)
-        {
-            //initPlayerPos.z -= deltaSpeed;
-            //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - deltaSpeed);
-        }
+            deltaSpeed = speed * Time.deltaTime;
 
-        if (initPlayerPos.z == Target.transform.position.z)
-        {
-            speed = initSpeed;
+            initPlayerPos.z += 0.5f * deltaSpeed;
+            transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + (0.5f * deltaSpeed));
+
+
+            if (initPlayerPos.z + 0.5f < Target.transform.position.z)
+            {
+                initPlayerPos.z += deltaSpeed;
+                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2 * (deltaSpeed));
+            }
+
+            if (initPlayerPos.z > Target.transform.position.z)
+            {
+                //initPlayerPos.z -= deltaSpeed;
+                //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z - deltaSpeed);
+            }
+
+            if (initPlayerPos.z == Target.transform.position.z)
+            {
+                speed = initSpeed;
+            }
+
         }
 
 

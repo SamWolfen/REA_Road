@@ -5,6 +5,7 @@ using UnityEngine;
 public class Metronome : MonoBehaviour
 {
     public GameObject ClickPool;
+    public GameObject Global;
     int poolSize;
     int nextClick;
     int clickRate;
@@ -31,6 +32,7 @@ public class Metronome : MonoBehaviour
 
     public void Click()
     {
+        Global.GetComponent<GlobalVariables>().UpdateScore();
 
         if (nextClick >= poolSize)
         {

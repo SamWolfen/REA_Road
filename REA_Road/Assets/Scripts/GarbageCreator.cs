@@ -40,7 +40,7 @@ public class GarbageCreator : MonoBehaviour
         tileTimer--;
         if (tileTimer <= 0)
         {
-            Debug.Log("NewTile");
+            //Debug.Log("NewTile");
 
             tileType = Random.Range(0, 3);
 
