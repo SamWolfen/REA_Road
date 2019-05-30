@@ -4,9 +4,16 @@ using UnityEngine;
 
 public class GlobalVariables : MonoBehaviour
 {
-    public float speed;
-    public enum Context {Win, Lose, Quesiton, Menu, Play};
+
+    public enum Context { Win, Lose, Quesiton, Menu, Play };
     public bool pause;
+    public bool demoMode;
+
+
+    //spawn/movement
+    public float speed;
+    public int tick = 0;
+
 
 
 

@@ -20,7 +20,13 @@ public class HandleInput : MonoBehaviour
         Up, Down, Left, Right, None
     }
 
+    enum Facing
+    {
+        Up, Down, Left, Right, None
+    }
+
     Swipe swipe;
+    Facing facing;
 
     // Start is called before the first frame update
     void Start()
@@ -68,7 +74,7 @@ public class HandleInput : MonoBehaviour
     void MovePlayer(Swipe swp)
     {
         Vector3 pos = gameObject.transform.position;
-        
+       
 
         if (swp != Swipe.None)
         {
@@ -101,7 +107,7 @@ public class HandleInput : MonoBehaviour
                     }
             }
 
-
+            transform.LookAt(nextPlayerPos);
             StartCoroutine(Hop());
         }
 
@@ -119,7 +125,7 @@ public class HandleInput : MonoBehaviour
 
         while (!ready)
         {
-            Debug.Log("loop hop");
+            //Debug.Log("loop hop");
 
             deltaSpeed = playerSpeed * Time.deltaTime;
 
