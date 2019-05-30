@@ -631,14 +631,18 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\CoinBehavior.cs" />
     <Compile Include="Assets\Scripts\GarbageCollector.cs" />
     <Compile Include="Assets\Scripts\GarbageCreator.cs" />
     <Compile Include="Assets\Scripts\GlobalVariables.cs" />
     <Compile Include="Assets\Scripts\HandleInput.cs" />
     <Compile Include="Assets\Scripts\Metronome.cs" />
+    <Compile Include="Assets\Scripts\PlayerCollisions.cs" />
     <Compile Include="Assets\Scripts\PoolGenerator.cs" />
+    <Compile Include="Assets\Scripts\RoadSetUp.cs" />
     <Compile Include="Assets\Scripts\SmoothCameraFollow.cs" />
     <Compile Include="Assets\Scripts\SwipeMovement.cs" />
+    <Compile Include="Assets\Scripts\VehicleCode.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\Materials\Green.shader" />

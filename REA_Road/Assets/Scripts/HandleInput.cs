@@ -121,7 +121,10 @@ public class HandleInput : MonoBehaviour
         float i = 0;
         Debug.Log("Hop started");
         
-
+        if ((nextPlayerPos.x > 5) || (nextPlayerPos.x < -4.5))
+        {
+            nextPlayerPos.x = transform.position.x;
+        }
 
         while (!ready)
         {
