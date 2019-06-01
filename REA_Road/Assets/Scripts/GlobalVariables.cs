@@ -19,6 +19,8 @@ public class GlobalVariables : MonoBehaviour
     public GameObject Title;
     public GameObject WinScreen;
     public GameObject LossScreen;
+    public GameObject CorrectScreen;
+    public GameObject WrongScreen;
     //spawn/movement
 
 
@@ -56,9 +58,9 @@ public class GlobalVariables : MonoBehaviour
             case Context.Play:
                 {
                     Question.SetActive(false);
-                    WinScreen.SetActive(false);
-                    WinScreen.SetActive(false);
-                    LossScreen.SetActive(false);
+                    
+                    //WinScreen.SetActive(false);
+                    //LossScreen.SetActive(false);
 
                     pause = false;
                     break;
@@ -71,6 +73,7 @@ public class GlobalVariables : MonoBehaviour
             case Context.Lose:
                 {
                     pause = true;
+                    LossScreen.SetActive(true);
                     break;
                 }
         }
@@ -80,6 +83,37 @@ public class GlobalVariables : MonoBehaviour
     {
         totalScore = score + tick;
         ScoreDisplay.GetComponent<UnityEngine.UI.Text>().text = "" + totalScore;
+        ScoreDisplay.GetComponent<UnityEngine.UI.Text>().color = Color.black;
+        if (currentQuestion >= 4)
+        {
+            //lose is neutral
+            context = Context.Lose;
+            UpdateContext();
+
+        }
+            
     }
 
+    public void Answer(bool ans)
+    {
+        if (ans)
+        {
+            score = score + 10;
+            Question.SetActive(false);
+            UpdateScore();
+            context = Context.Play;
+            UpdateContext();
+            currentQuestion++;
+
+        }
+        else
+        {
+            score = score - 10;
+            UpdateScore();
+            context = Context.Play;
+            UpdateContext();
+            currentQuestion++;
+            ScoreDisplay.GetComponent<UnityEngine.UI.Text>().color = Color.red;
+        }
+    }
 }

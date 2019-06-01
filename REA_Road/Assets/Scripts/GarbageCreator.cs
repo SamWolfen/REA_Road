@@ -7,27 +7,56 @@ public class GarbageCreator : MonoBehaviour
     public GameObject Global;
     public GameObject GrassPool;
     public GameObject RoadPool;
-    
+    public GameObject CoinPool;
+    public GameObject CoinPlcer;
+
+
+    public int CheckpointDist;
+
+   public int nextCheck;
+
+    public GameObject EnviromentContainer;
+    public GameObject[] EnviromentList;
+
 
     int tileTimer;
 
     public int tileType;
 
     public int roadIndex, grass1Index, grass2Index, poolSize;
-    
+
 
     // Start is called before the first frame update
     void Start()
     {
         tileTimer = roadIndex = grass1Index = grass2Index = 0;
         poolSize = GrassPool.GetComponent<PoolGenerator>().PoolObjectList.Capacity;
-        
+        //nextCheck = CheckpointDist;
+        EnviromentContainer.SetActive(false);
+
+        int i = 0;
+
+        while (i < EnviromentList.Length)
+        {
+
+            try
+            {
+                EnviromentList[i].SetActive(false);
+            } catch
+            {
+
+            }
+            i++;
+        }
+
+
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void Tick()
@@ -42,18 +71,23 @@ public class GarbageCreator : MonoBehaviour
         {
             //Debug.Log("NewTile");
 
-            tileType = Random.Range(0, 3);
+            tileType = Random.Range(0, 4);
 
-            
+            if (Global.GetComponent<GlobalVariables>().tick > nextCheck)
+            {
+                tileType = 4;
+               
+            }
+
 
             switch (tileType)
-                {
+            {
 
                 case 0:
                     {
                         //road is 4 wide
                         tileTimer = 4;
-                        
+
                         if (roadIndex >= poolSize)
                         {
                             roadIndex = 0;
@@ -71,7 +105,7 @@ public class GarbageCreator : MonoBehaviour
                     {
                         //grass is 2 wide
                         tileTimer = 2;
-                        
+
                         if (grass1Index >= poolSize)
                         {
                             grass1Index = 0;
@@ -80,6 +114,8 @@ public class GarbageCreator : MonoBehaviour
                         GrassPool.GetComponent<PoolGenerator>().PoolObjectList[grass1Index].SetActive(true);
                         GrassPool.GetComponent<PoolGenerator>().PoolObjectList[grass1Index].transform.position = transform.position;
                         grass1Index++;
+
+
                         break;
                     }
 
@@ -87,7 +123,7 @@ public class GarbageCreator : MonoBehaviour
                     {
                         //grass is 2 wide
                         tileTimer = 2;
-                        
+
                         if (grass2Index >= poolSize)
                         {
                             grass2Index = 0;
@@ -99,13 +135,46 @@ public class GarbageCreator : MonoBehaviour
                         break;
                     }
 
+                case 3:
+                    {
+                        //grass is 2 wide
+                        tileTimer = 2;
+
+                        if (grass2Index >= poolSize)
+                        {
+                            grass2Index = 0;
+                        }
+
+                        GrassPool.GetComponent<PoolGenerator>().PoolObject2List[grass2Index].SetActive(true);
+                        GrassPool.GetComponent<PoolGenerator>().PoolObject2List[grass2Index].transform.position = transform.position;
+                        grass2Index++;
+                        break;
+                    }
+                case 4:
+                    {
+                        //enviroment is 10 wide
+                        tileTimer = 10;
+
+                        nextCheck += CheckpointDist;
+
+                        EnviromentContainer.SetActive(true);
+                        EnviromentList[Global.GetComponent<GlobalVariables>().currentQuestion-1].SetActive(true);
+                        EnviromentContainer.transform.position = transform.position;
+
+
+                        break;
+                    }
+
 
             }
 
+
             
+
+
         }
 
-        
+
 
     }
 

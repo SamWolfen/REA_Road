@@ -48,6 +48,7 @@ public class PlayerCollisions : MonoBehaviour
 
                     //lose
                     Global.GetComponent<GlobalVariables>().context = GlobalVariables.Context.Lose;
+                    Global.GetComponent<GlobalVariables>().UpdateContext();
 
                     break;
                 }

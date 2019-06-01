@@ -33,8 +33,8 @@ public class SmoothCameraFollow : MonoBehaviour
 
             if (initPlayerPos.z + 0.5f < Target.transform.position.z)
             {
-                initPlayerPos.z += deltaSpeed;
-                transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2 * (deltaSpeed));
+                //initPlayerPos.z += deltaSpeed;
+                //transform.position = new Vector3(transform.position.x, transform.position.y, transform.position.z + 2 * (deltaSpeed));
             }
 
             if (initPlayerPos.z > Target.transform.position.z)

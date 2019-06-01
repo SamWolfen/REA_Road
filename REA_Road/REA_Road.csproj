@@ -631,6 +631,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\AnswerButton.cs" />
+    <Compile Include="Assets\CoinSpawner.cs" />
+    <Compile Include="Assets\Lose.cs" />
+    <Compile Include="Assets\QuestionManager.cs" />
     <Compile Include="Assets\Scripts\CoinBehavior.cs" />
     <Compile Include="Assets\Scripts\GarbageCollector.cs" />
     <Compile Include="Assets\Scripts\GarbageCreator.cs" />

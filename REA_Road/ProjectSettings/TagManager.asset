@@ -9,6 +9,8 @@ TagManager:
   - Coin
   - Hazard
   - Question
+  - true
+  - false
   layers:
   - Default
   - TransparentFX
